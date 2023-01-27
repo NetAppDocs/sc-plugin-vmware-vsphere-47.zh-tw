@@ -1,0 +1,25 @@
+---
+sidebar: sidebar 
+permalink: scpivs44_download_the_snapcenter_plug-in_for_vmware_vsphere_ova_open_virtual_appliance.html 
+keywords:  
+summary: 您可以從 NetApp 支援網站下載適用於VMware vSphere 的 SnapCenter 外掛程式 .ova 檔案。 
+---
+= 下載SnapCenter VMware vSphere OVA的功能更新外掛程式（開放式虛擬應用裝置）
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+您可以下載 `.ova` VMware vSphere的支援文件（英文）NetApp 支援網站 SnapCenter 。
+
+。 `.ova` 檔案包含一組適用於VM和資料存放區資料保護的微服務、這些服務是由SnapCenter VMware的VMware外掛程式執行。部署完成後、所有元件都會安裝在您環境中的Linux VM上。
+
+.步驟
+. 登入 NetApp 支援網站（ https://mysupport.netapp.com/products/index.html["https://mysupport.netapp.com/products/index.html"^]）。
+. 從產品清單中、選取* SnapCenter 《VMware vSphere *適用的*》「VMware vSphere外掛程式」、然後按一下「*下載最新版本*」按鈕。
+. 下載SnapCenter VMware vSphere的《支援VMware vSphere的功能》外掛程式 `.ova` 檔案至任何位置。
+
