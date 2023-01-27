@@ -1,0 +1,2137 @@
+<!DOCTYPE html>
+<html lang="zh-tw">
+  <head class="at-element-marker">
+  <title>工作流程、先決條件及限制</title>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge,chrome=1">
+  <meta http-equiv="language" content="en">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta property="og:title" content="工作流程、先決條件及限制" />
+	<meta property="og:type" content="website" />
+	<meta property="og:url" content="https://docs.netapp.com/zh-tw/sc-plugin-vmware-vsphere-47/scpivs44_restore_guest_files_and_folders_overview.html" />
+	<meta property="og:description" content="您可以從Windows來賓作業系統上的虛擬機器磁碟（VMDK）還原檔案或資料夾。" />
+  <meta property="og:image" content="https://docs.netapp.com/zh-tw/sc-plugin-vmware-vsphere-47/images/logo-tophat-social.png" />
+  <meta property="og:image:alt" content="NetApp Logo" />
+  <meta name="format-detection" content="telephone=no">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta http-equiv="encoding" content="utf-8">
+  <meta http-equiv="nss-type" content="Product Documentation"/>
+  <meta http-equiv="nss-subtype" content="User Guide"/><meta name="description" content="您可以從Windows來賓作業系統上的虛擬機器磁碟（VMDK）還原檔案或資料夾。">
+  <meta name="keywords" content=" "><!-- Icons -->
+  <link rel="icon" href="/zh-tw/sc-plugin-vmware-vsphere-47/images/favicon.ico" type="image/x-icon">
+
+  <!-- RSS Feed --><!-- CSS Definitions: NetApp CSS should be defined after generic css -->
+
+  <!-- Elastic Search -->
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/searchkit/0.10.0/theme.css">
+
+  <!-- Combined CSS -->
+  <link rel="stylesheet" type="text/css" href="/zh-tw/sc-plugin-vmware-vsphere-47/css/netappdocs.css">
+
+  
+  <link rel="stylesheet" href="/zh-tw/sc-plugin-vmware-vsphere-47/css/landing-page.css" type="text/css">
+  <link rel="stylesheet" href="/zh-tw/sc-plugin-vmware-vsphere-47/css/tabbed-blocks.css" type="text/css">
+  <!-- Canonical url -->
+  <link rel='stylesheet' href='/zh-tw/sc-plugin-vmware-vsphere-47/css/na-feature.css' type='text/css'><!-- Top level site integrations --><script>
+    function addAdobeLaunch(adobeId) {
+      var head = document.getElementsByTagName('head')[0];
+      var adobe = document.createElement("script");
+      adobe.type = "text/plain";
+      adobe.className = "optanon-category-C0002";
+      adobe.src = "//assets.adobedtm.com/60287eadf1ee/c284da483c83/"+adobeId+".min.js";
+      head.appendChild(adobe);
+    }
+
+    function addGoogleAnalytics(gtagId) {
+      var google = document.createElement("script");
+      google.type = "text/plain";
+      google.className = "optanon-category-C0002";
+      google.src = "https://www.googletagmanager.com/gtag/js?id="+gtagId;
+      var head = document.getElementsByTagName('head')[0];
+      head.appendChild(google);
+
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', gtagId);
+    }
+
+    function addConsent(consentId) {
+      var head = document.getElementsByTagName('head')[0];
+      var onetrustConsent = document.createElement("script");
+      onetrustConsent.type = "text/javascript";
+      onetrustConsent.src = "https://cdn.cookielaw.org/consent/"+consentId+"/OtAutoBlock.js";
+      head.appendChild(onetrustConsent);
+
+      var onetrustScript = document.createElement("script");
+      onetrustScript.type = "text/javascript";
+      onetrustScript.src = "https://cdn.cookielaw.org/scripttemplates/otSDKStub.js";
+      onetrustScript.charset = "UTF-8";
+      onetrustScript.dataset.documentLanguage = "true";
+      onetrustScript.dataset.domainScript = consentId;
+      head.appendChild(onetrustScript);
+    }addConsent("72570c5c-fe30-465f-b0e0-b77f7fb4ae34");
+    addAdobeLaunch("launch-e9ff3acac59f");
+    addGoogleAnalytics("UA-81697994-3");function OptanonWrapper() { }
+  </script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+
+  <!-- Used for Product Family Page Sidebar Visibility --><!-- Used to import Promise for IE. Required for SearchKit -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bluebird/3.3.5/bluebird.min.js"></script><script src='/zh-tw/sc-plugin-vmware-vsphere-47/js/na-search.js'></script><script src='/zh-tw/sc-plugin-vmware-vsphere-47/js/na-pagenav.js'></script><script src='/zh-tw/sc-plugin-vmware-vsphere-47/js/na-utility.js'></script>
+  <script src='/zh-tw/sc-plugin-vmware-vsphere-47/js/clouddocs.js'></script>
+  <script src='/zh-tw/sc-plugin-vmware-vsphere-47/js/jquery.navgoco.min.js'></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+  <script src='/zh-tw/sc-plugin-vmware-vsphere-47/js/toc.js'></script>
+  <script src='/zh-tw/sc-plugin-vmware-vsphere-47/js/customscripts.js'></script><script>
+      $(document).ready(function() {
+          
+          var collapseOnInit = true;
+          
+
+          var navSettings = {
+              "caretHtml": '',
+              "accordion": collapseOnInit,
+              "openClass": 'active', // open
+              "save": false, // leave false or nav highlighting doesn't work right
+              "cookie": {
+                  "name": 'navgoco',
+                  "expires": false,
+                  "path": '/'
+              },
+              "slide": {
+                  "duration": 400,
+                  "easing": 'swing'
+              }
+          };
+
+          // Initialize navgoco with default options
+          $("#mysidebar").navgoco(navSettings);
+          
+
+          $("#collapseAll").click(function(e) {
+              e.preventDefault();
+              $("#mysidebar").navgoco('toggle', false);
+          });
+
+          $("#expandAll").click(function(e) {
+              e.preventDefault();
+              $("#mysidebar").navgoco('toggle', true);
+          });
+
+          $(".sidebar-nav-container").on("scroll", function() {
+            $.cookie("sidebarScroll", $(".sidebar-nav-container").scrollTop(), {
+              path    : "/zh-tw/sc-plugin-vmware-vsphere-47"  
+            });
+          });
+          $(function() {
+            if ($.cookie("sidebarScroll")) {
+              $(".sidebar-nav-container").scrollTop($.cookie("sidebarScroll"));
+            }
+          });
+
+      });
+
+  </script>
+  <script>
+      $(document).ready(function() {
+          $("#tg-sb-link").click(function() {
+              $("#tg-sb-sidebar").toggle();
+              $("#tg-sb-content").toggleClass('col-md-9');
+              $("#tg-sb-content").toggleClass('col-md-12');
+              $("#tg-sb-icon").toggleClass('fa-toggle-on');
+              $("#tg-sb-icon").toggleClass('fa-toggle-off');
+          });
+      });
+  </script>
+  <script src='/zh-tw/sc-plugin-vmware-vsphere-47/js/custom-dropdown.js'></script>
+  <script src='/zh-tw/sc-plugin-vmware-vsphere-47/js/FileSaver.min.js'></script>
+  <script src='/zh-tw/sc-plugin-vmware-vsphere-47/js/jszip-utils.min.js'></script>
+  <script src='/zh-tw/sc-plugin-vmware-vsphere-47/js/jszip.min.js'></script>
+  <script src='/zh-tw/sc-plugin-vmware-vsphere-47/js/pdf-ux.js'></script>
+</head>
+
+
+  <body class role="document" data-flavor="">
+    <div id="page" class="n-off-canvas-menu">
+      <div class="n-off-canvas-menu__menu"><!--TODO: Add offcanvas code --></div>
+      <div class="n-off-canvas-menu__content-wrap">
+        <header class="site-header" id="banner">
+  
+  <!-- Start Page Toolbar -->
+  
+  <div class="page-nav-toolbar"><div id="version-dropdown-new" class="custom-dropdown" >
+  <div class="custom-dropdown-select unselected" title="VMware vSphere的插件SnapCenter 4.7">
+    <label>版本</label>
+    <span translate="no" class="notranslate">VMware vSphere的插件SnapCenter 4.7</span>
+    <img src="/zh-tw/sc-plugin-vmware-vsphere-47/images/chevron_up.svg" alt="" class="custom-icon chevrondown invisible" />
+    <img src="/zh-tw/sc-plugin-vmware-vsphere-47/images/chevron_down.svg" alt="" class="custom-icon chevronup" />
+  </div>
+
+  <ul class="custom-dropdown-menu"><li>
+      
+      <a href="https://docs.netapp.com/zh-tw/sc-plugin-vmware-vsphere-47/scpivs44_restore_guest_files_and_folders_overview.html" target="_self">
+        <span translate="no" class="notranslate"><span>VMware vSphere的插件SnapCenter</span><span class="version"> 4.7</span></span>
+      </a>
+                     
+    </li>
+    <li>
+      
+      <a href="https://docs.netapp.com/zh-tw/sc-plugin-vmware-vsphere/scpivs44_restore_guest_files_and_folders_overview.html" target="_self">
+        <span translate="no" class="notranslate"><span>VMware vSphere的插件SnapCenter</span><span class="version"> 4.8</span></span>
+      </a>
+                     
+    </li>
+    <li>
+      
+      <a href="https://docs.netapp.com/zh-tw/sc-plugin-vmware-vsphere-46/scpivs44_restore_guest_files_and_folders_overview.html" target="_self">
+        <span translate="no" class="notranslate"><span>VMware vSphere的插件SnapCenter</span><span class="version"> 4.6</span></span>
+      </a>
+                     
+    </li>
+    <li>
+      
+      <a href="https://docs.netapp.com/zh-tw/sc-plugin-vmware-vsphere-45/scpivs44_restore_guest_files_and_folders_overview.html" target="_self">
+        <span translate="no" class="notranslate"><span>VMware vSphere的插件SnapCenter</span><span class="version"> 4.5</span></span>
+      </a>
+                     
+    </li>
+    
+  </ul>
+</div><div class="page-nav-contribute"><a target="_blank" href="https://github.com/NetAppDocs/sc-plugin-vmware-vsphere-47/issues/new?body=Page%3A%20[工作流程、先決條件及限制](https://docs.netapp.com/zh-tw/sc-plugin-vmware-vsphere-47/scpivs44_restore_guest_files_and_folders_overview.html)&template=public-issue-template.md" class="page-nav-contribute-link" role="button"><img src="/zh-tw/sc-plugin-vmware-vsphere-47/images/discuss-sm.svg" alt="" class="github-icon" />要求變更文件</a><a target="_blank" href="https://github.com/NetAppDocs/sc-plugin-vmware-vsphere-47/blob/main/scpivs44_restore_guest_files_and_folders_overview.adoc" class="page-nav-contribute-link" role="button"><img src="/zh-tw/sc-plugin-vmware-vsphere-47/images/edit-sm.svg" alt="" class="github-icon" />編輯此頁面</a><a target="_blank" href="https://docs.netapp.com/us-en/contribute/" class="page-nav-contribute-link"  ><img src="/zh-tw/sc-plugin-vmware-vsphere-47/images/article-sm.svg" alt="" class="github-icon" />瞭解如何作出貢獻</a></div>
+    <div class="page-nav-container">
+      <nav class="page-nav-fixed">
+        <div class="page-nav-title">在此頁面上</div>
+        <div class="page-nav-links">
+          <ul class="page-nav-inner" id="page-menu"></ul>
+        </div>
+      </nav>
+    </div>
+  </div>
+  
+  
+  <!-- Start top_hat -->
+  <div class="n-top-hat">
+    <div class="n-container">
+      <div class="n-top-hat__cross-property-nav">
+        <ul class="n-top-hat__list">
+          <li class="n-top-hat__list-item">
+            <a href="https://www.netapp.com/products-a-z/" class="n-top-hat__link">產品與解決方案</a>
+          </li>
+          <li class="n-top-hat__list-item">
+            <a href="https://www.netapp.com/support-and-training/netapp-university/" class="n-top-hat__link">支援與訓練</a>
+          </li>
+          <li class="n-top-hat__list-item">
+            <a href="https://cloud.netapp.com" class="n-top-hat__link">Cloud Central</a>
+          </li>
+          <li class="n-top-hat__list-item">
+            <a href="https://community.netapp.com/" class="n-top-hat__link">社群</a>
+          </li>
+          <li class="n-top-hat__list-item">
+            <a href="https://blog.netapp.com/" class="n-top-hat__link">部落格</a>
+          </li>
+          <li class="n-top-hat__list-item">
+            <a href="https://customers.netapp.com/en/" class="n-top-hat__link">客戶成功案例</a>
+          </li>
+          <li class="n-top-hat__list-item">
+            <a href="https://www.netapp.com/us/contact-us/index.aspx" target="_self" class="n-top-hat__link" data-ntap-ui="contact-us">聯絡人</a>
+          </li>
+        </ul>
+      </div>
+      <div class="n-top-hat__utils">
+        <ul class="n-top-hat__list">
+          <li class="n-top-hat__list-item">
+            <a href="https://www.netapp.com/us/contact-us/index.aspx" target="_self" class="n-top-hat__link" data-ntap-ui="contact-us">聯絡人</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <!-- End top_hat -->
+
+  <!-- Start property bar -->
+  <style>
+    .n-property-navigation-bar__menus--desktop-experience .n-menu--mega__default-content__heading span {
+    color: #34B0FF;
+    }
+  </style>
+  <div class="n-property-bar " data-ntap-ui="sticky-nav">
+    <div class="n-property-bar__inner-wrap">
+      <div class="n-property-bar__menu-toggle">
+        <a href="#" class="n-property-bar__menu-toggle-link">
+          <span class="n-property-bar__menu-toggle-text">Menu</span>
+          <svg class="n-icon-bars n-property-bar__menu-toggle-icon" aria-labelledby="title">
+            <title>bars</title>
+            <use xlink:href="/zh-tw/sc-plugin-vmware-vsphere-47/common/svg/sprite.svg#bars"></use>
+          </svg>
+        </a>
+      </div>
+      <div class="n-property-bar__property-mark ">
+        <a href="https://www.netapp.com" class="n-property-bar__property-link">
+          <div class="n-property-bar__logo">
+            <svg class="n-icon-netapp-mark n-icon-netapp-mark n-property-bar__netapp-mark-icon" aria-labelledby="title">
+              <title>netapp-mark</title>
+              <use xlink:href="/zh-tw/sc-plugin-vmware-vsphere-47/common/svg/sprite.svg#netapp-mark"></use>
+            </svg>
+            <svg class="n-icon-netapp-logo n-property-bar__logo-svg" aria-labelledby="title">
+              <title>netapp-logo</title>
+              <use xlink:href="/zh-tw/sc-plugin-vmware-vsphere-47/common/svg/sprite.svg#netapp-logo"></use>
+            </svg>
+          </div>
+        </a>
+      </div>
+
+      
+      
+      
+      <div class="search-property-bar">
+        <div id="search-demo-container" class="searchbox n-property-bar__search">
+          <div id="react-search" 
+          data-search-html="/zh-tw/sc-plugin-vmware-vsphere-47/search.html"
+          data-type="widget" 
+          data-placeholder="搜尋文件"
+          data-no-results-found="找不到符合 {query} 的相關結果。"
+          data-did-you-mean="搜尋 {suggestion}。"
+          data-no-results-found-did-you-mean="找不到符合 {query} 的相關結果。您是否要找的是{suggestion}？"
+          data-results-found="找到 {hitCount} 筆結果"
+          data-error-message="We're sorry, an issue occurred when fetching your results. Please try again."
+          data-error-reset="Reset Search"
+          data-sk-es-pf-indexes=""
+          data-flavor=""></div>
+          <button class="n-property-bar__search-toggle-button" type="button">
+            <svg class="n-icon-search n-property-bar__search-toggle-button-icon" aria-labelledby="title">
+              <title>search</title>
+              <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/zh-tw/sc-plugin-vmware-vsphere-47/common/svg/sprite.svg#search"></use>
+            </svg>
+          </button>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+  <div class="n-property-bar__toolbar">
+    <!-- Start Language Selector --><div id="language-dropdown" class="custom-dropdown custom-dropdown-lang">
+      <div class="custom-dropdown-select custom-dropdown-select-lang">
+      <span class="lang-name">繁體中文</span>
+          <svg class="n-globe__icon" aria-labelledby="title">
+            <title>globe</title>
+            <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/zh-tw/sc-plugin-vmware-vsphere-47/common/svg/sprite.svg#globe"></use>
+          </svg>
+        </button>
+      </div>
+
+      <ul class="custom-dropdown-menu"><li>
+          <a href="https://docs.netapp.com/zh-tw/sc-plugin-vmware-vsphere-47/scpivs44_restore_guest_files_and_folders_overview.html" target="_self"><span translate="no" class="notranslate">繁體中文</span></a>
+        </li><li>
+          <a href="https://docs.netapp.com/us-en/sc-plugin-vmware-vsphere-47/scpivs44_restore_guest_files_and_folders_overview.html" target="_self"><span translate="no" class="notranslate">English</span></a>
+        </li><li>
+          <a href="https://docs.netapp.com/ja-jp/sc-plugin-vmware-vsphere-47/scpivs44_restore_guest_files_and_folders_overview.html" target="_self"><span translate="no" class="notranslate">日本語</span></a>
+        </li><li>
+          <a href="https://docs.netapp.com/zh-cn/sc-plugin-vmware-vsphere-47/scpivs44_restore_guest_files_and_folders_overview.html" target="_self"><span translate="no" class="notranslate">简体中文</span></a>
+        </li><li>
+          <a href="https://docs.netapp.com/ko-kr/sc-plugin-vmware-vsphere-47/scpivs44_restore_guest_files_and_folders_overview.html" target="_self"><span translate="no" class="notranslate">한국어</span></a>
+        </li><li>
+          <a href="https://docs.netapp.com/fr-fr/sc-plugin-vmware-vsphere-47/scpivs44_restore_guest_files_and_folders_overview.html" target="_self"><span translate="no" class="notranslate">Français</span></a>
+        </li><li>
+          <a href="https://docs.netapp.com/de-de/sc-plugin-vmware-vsphere-47/scpivs44_restore_guest_files_and_folders_overview.html" target="_self"><span translate="no" class="notranslate">Deutsch</span></a>
+        </li></ul>
+    </div><!-- End Language Selector -->
+
+    <div class="n-property-bar__cta"></div>
+  </div>
+  <script>
+    $(function(){
+        var currentLocalization = $('html').attr('lang');
+
+        var localizationsDictionary = {
+            "en-CA" : "https://www.netapp.com/search/index.aspx?for_cr=canada&",
+            "en-IN" : "https://www.netapp.com/search/index.aspx?for_cr=india&",
+            "nl-NL" : "https://www.netapp.com/search/index.aspx?for_cr=netherlands&",
+            "ru-RU" : "https://www.netapp.com/search/index.aspx?for_cr=russia&",
+            "sv-SE" : "https://www.netapp.com/search/index.aspx?for_cr=sweden&",
+            "it-IT" : "https://www.netapp.com/search/index.aspx?for_cr=italy&",
+            "he-IL" : "https://www.netapp.com/search/index.aspx?for_cr=israel&",
+            "ko-KR" : "https://www.netapp.com/search/index.aspx?for_cr=korea&",
+            "zh-TW" : "https://www.netapp.com/search/index.aspx?for_cr=taiwan&",
+            "en-GB" : "https://www.netapp.com/search/index.aspx?for_cr=unitedkingdom&",
+            "en-SG" : "https://www.netapp.com/search/index.aspx?for_cr=asean&",
+            "en-AU" : "https://www.netapp.com/search/index.aspx?for_cr=australia&",
+            "pt-BR" : "https://www.netapp.com/search/index.aspx?for_cr=brasil&",
+            "de-CH" : "https://www.netapp.com/search/index.aspx?for_cr=switzerland&",
+            "es-MX" : "https://www.netapp.com/search/index.aspx?for_cr=mexico&"
+        };
+
+        if($('html').hasClass('ntap-whitelisted') && localizationsDictionary.hasOwnProperty(currentLocalization)) {
+            $('.n-property-bar__property-link').attr('href', '/');
+        }
+    });
+  </script>
+  <!-- End property bar -->
+</header>
+
+
+        <main id="n-main-content" class="n-main-content">
+          <!-- Start Documentation Content -->
+<div class="ie-main">
+  <!-- Sidebar Column -->
+  
+  <div class="col-md-3" id="sidebar-height">
+      <button id="btn-sidebar-collapse" onclick="hideSidebar()"><img src="/zh-tw/sc-plugin-vmware-vsphere-47/images/collapse.png" alt="收合瀏覽面板"></button>
+      <div class="n-pdf-header">
+  <a id="toggleButtonPdf" class="n-pdf-button" type="button">
+    <img src="/zh-tw/sc-plugin-vmware-vsphere-47/images/pdf.png" alt="" width="16" height="16"/>可用的 PDF<span>
+    </span>
+  </a>
+</div>
+<div class="n-pdf-body-container">
+  <ul id="toggleContainerPdf" class="n-pdf-body" style="display:none;"><li class="pdf-ux-container">
+        
+        
+        
+        <a target="_blank" href="/zh-tw/sc-plugin-vmware-vsphere-47/pdfs/fullsite-sidebar/VMware_vSphere文件的VMware外掛程式SnapCenter.pdf" >
+          <img src="/zh-tw/sc-plugin-vmware-vsphere-47/images/pdf.png" alt="" width="16" height="16"/>此文件網站（PDF 格式）</a>
+
+
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" 
+            
+              href="/zh-tw/sc-plugin-vmware-vsphere-47/pdfs/sidebar/概念.pdf" 
+            
+          >
+            <img src="/zh-tw/sc-plugin-vmware-vsphere-47/images/pdf.png" alt="" width="16" height="16"/>
+            概念
+          </a>
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" 
+            
+              href="/zh-tw/sc-plugin-vmware-vsphere-47/pdfs/sidebar/開始使用.pdf" 
+            
+          >
+            <img src="/zh-tw/sc-plugin-vmware-vsphere-47/images/pdf.png" alt="" width="16" height="16"/>
+            開始使用
+          </a>
+          
+
+
+
+
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" 
+            
+              href="/zh-tw/sc-plugin-vmware-vsphere-47/pdfs/sidebar/部署選擇控制閥的要求.pdf" 
+            
+          >
+            <img src="/zh-tw/sc-plugin-vmware-vsphere-47/images/pdf.png" alt="" width="16" height="16"/>
+            部署選擇控制閥的要求
+          </a>
+          
+
+
+
+
+
+
+        </li>
+      </ul>
+    
+
+  
+
+
+
+
+
+
+
+
+
+
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" 
+            
+              href="/zh-tw/sc-plugin-vmware-vsphere-47/pdfs/sidebar/快速入門.pdf" 
+            
+          >
+            <img src="/zh-tw/sc-plugin-vmware-vsphere-47/images/pdf.png" alt="" width="16" height="16"/>
+            快速入門
+          </a>
+          
+
+
+
+
+
+
+
+
+
+
+
+
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" 
+            
+              href="/zh-tw/sc-plugin-vmware-vsphere-47/pdfs/sidebar/監控與報告.pdf" 
+            
+          >
+            <img src="/zh-tw/sc-plugin-vmware-vsphere-47/images/pdf.png" alt="" width="16" height="16"/>
+            監控與報告
+          </a>
+          
+
+
+
+
+
+
+
+
+
+
+
+
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" 
+            
+              href="/zh-tw/sc-plugin-vmware-vsphere-47/pdfs/sidebar/管理儲存設備.pdf" 
+            
+          >
+            <img src="/zh-tw/sc-plugin-vmware-vsphere-47/images/pdf.png" alt="" width="16" height="16"/>
+            管理儲存設備
+          </a>
+          
+
+
+
+
+
+
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" 
+            
+              href="/zh-tw/sc-plugin-vmware-vsphere-47/pdfs/sidebar/保護資料.pdf" 
+            
+          >
+            <img src="/zh-tw/sc-plugin-vmware-vsphere-47/images/pdf.png" alt="" width="16" height="16"/>
+            保護資料
+          </a>
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" 
+            
+              href="/zh-tw/sc-plugin-vmware-vsphere-47/pdfs/sidebar/掛載及卸載資料存放區.pdf" 
+            
+          >
+            <img src="/zh-tw/sc-plugin-vmware-vsphere-47/images/pdf.png" alt="" width="16" height="16"/>
+            掛載及卸載資料存放區
+          </a>
+          
+
+
+
+
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" 
+            
+              href="/zh-tw/sc-plugin-vmware-vsphere-47/pdfs/sidebar/從備份還原.pdf" 
+            
+          >
+            <img src="/zh-tw/sc-plugin-vmware-vsphere-47/images/pdf.png" alt="" width="16" height="16"/>
+            從備份還原
+          </a>
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" 
+            
+              href="/zh-tw/sc-plugin-vmware-vsphere-47/pdfs/sidebar/還原來賓檔案和資料夾.pdf" 
+            
+          >
+            <img src="/zh-tw/sc-plugin-vmware-vsphere-47/images/pdf.png" alt="" width="16" height="16"/>
+            還原來賓檔案和資料夾
+          </a>
+          
+    <ul class="subfolders" id="pdf-remove" style="display:none;"><li class="active"></li></ul>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" 
+            
+              href="/zh-tw/sc-plugin-vmware-vsphere-47/pdfs/sidebar/管理SnapCenter_VMware_vSphere應用裝置的VMware_vCenter外掛程式.pdf" 
+            
+          >
+            <img src="/zh-tw/sc-plugin-vmware-vsphere-47/images/pdf.png" alt="" width="16" height="16"/>
+            管理SnapCenter VMware vSphere應用裝置的VMware vCenter外掛程式
+          </a>
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" 
+            
+              href="/zh-tw/sc-plugin-vmware-vsphere-47/pdfs/sidebar/管理您的組態.pdf" 
+            
+          >
+            <img src="/zh-tw/sc-plugin-vmware-vsphere-47/images/pdf.png" alt="" width="16" height="16"/>
+            管理您的組態
+          </a>
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" 
+            
+              href="/zh-tw/sc-plugin-vmware-vsphere-47/pdfs/sidebar/REST_API.pdf" 
+            
+          >
+            <img src="/zh-tw/sc-plugin-vmware-vsphere-47/images/pdf.png" alt="" width="16" height="16"/>
+            REST API
+          </a>
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" 
+            
+              href="/zh-tw/sc-plugin-vmware-vsphere-47/pdfs/sidebar/升級.pdf" 
+            
+          >
+            <img src="/zh-tw/sc-plugin-vmware-vsphere-47/images/pdf.png" alt="" width="16" height="16"/>
+            升級
+          </a>
+          
+
+
+
+
+
+
+        </li>
+      </ul>
+    
+
+  
+
+
+
+</li></ul>
+  <div class="zip-pdf-link-container" style="display: none;">   
+    <a href="#" id="zipPdf">
+      <img src="/zh-tw/sc-plugin-vmware-vsphere-47/images/pdf-zip.png" alt="" width="16" height="16"/>
+      <pre>個別 PDF 文件的集合<span class="zip-size"></span></pre>
+    </a><div id="zip-link-popup" class="hide">
+    <div class="inner-modal">
+        <div class="downloading-progress">
+            <div class="spinner"></div>
+            <h1>Creating your file...</h1>
+            <div>This may take a few minutes. Thanks for your patience.</div>
+            <button class="cancel-download-btn" type="button">Cancel</button>
+        </div>
+        <div class="download-complete hide">
+            <div class="done-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M20.285 2l-11.285 11.567-5.286-5.011-3.714 3.716 9 8.728 15-15.285z"/></svg>
+            </div>
+            <div>Your file is ready</div>
+            <button class="cancel-download-btn" type="button">OK</button>
+        </div>
+    </div>
+</div>
+<script>
+    $(".cancel-download-btn").click(function(){
+        $("#zip-link-popup").addClass("hide");
+        $("#zip-link-popup .downloading-progress").removeClass("hide");
+        $("#zip-link-popup .download-complete").addClass("hide");
+    });
+</script></div>
+</div>
+<script>
+  $("#toggleContainerPdf li.active:last-child").parents('ul.subfolders').toggle('display');
+  $("#toggleButtonPdf").click(function () {
+    $("#toggleContainerPdf").toggle('display');
+    $(".n-pdf-body-container .zip-pdf-link-container").toggle('display');
+  });
+</script><div class="sidebar-nav-container" id="mysidebardiv">
+  <ul id="mysidebar" class="nav"><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="VMware vSphere 4.7文件的適用外掛程式SnapCenter"
+      data-li-level="1#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/zh-tw/sc-plugin-vmware-vsphere-47/index.html">
+        VMware vSphere 4.7文件的適用外掛程式SnapCenter
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="版本資訊"
+      data-li-level="1#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/zh-tw/sc-plugin-vmware-vsphere-47/scpivs44_release_notes.html">
+        版本資訊
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="概念"
+      data-li-level="1" 
+      class="subfolders "
+    ><a href="#">
+        <div class="na-navbar-padding"> 概念</div>
+      </a>
+      <ul style="display: none;">
+        <li 
+      data-pdf-exists="true" 
+      data-pdf-filename="產品總覽"
+      data-li-level="2#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/zh-tw/sc-plugin-vmware-vsphere-47/scpivs44_concepts_overview.html">
+        產品總覽
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="不同SnapCenter 的圖形介面總覽"
+      data-li-level="2#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/zh-tw/sc-plugin-vmware-vsphere-47/scpivs44_overview_of_different_snapcenter_guis.html">
+        不同SnapCenter 的圖形介面總覽
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="授權"
+      data-li-level="2#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/zh-tw/sc-plugin-vmware-vsphere-47/scpivs44_licensing.html">
+        授權
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="角色型存取控制（RBAC）"
+      data-li-level="2#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/zh-tw/sc-plugin-vmware-vsphere-47/scpivs44_role_based_access_control.html">
+        角色型存取控制（RBAC）
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="VMware vSphere使用者適用的RBAC外掛程式類型SnapCenter"
+      data-li-level="2#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/zh-tw/sc-plugin-vmware-vsphere-47/scpivs44_types_of_rbac_for_snapcenter_users.html">
+        VMware vSphere使用者適用的RBAC外掛程式類型SnapCenter
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="VMware vSphere的VMware vSphere的VMware外掛程式中包含的RBAC功能ONTAP SnapCenter"
+      data-li-level="2#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/zh-tw/sc-plugin-vmware-vsphere-47/scpivs44_ontap_rbac_features_in_snapcenter.html">
+        VMware vSphere的VMware vSphere的VMware外掛程式中包含的RBAC功能ONTAP SnapCenter
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="VMware SnapCenter vSphere隨附於VMware vSphere的VMware vCenter外掛程式的預先定義角色"
+      data-li-level="2#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/zh-tw/sc-plugin-vmware-vsphere-47/scpivs44_predefined_roles_packaged_with_snapcenter.html">
+        VMware SnapCenter vSphere隨附於VMware vSphere的VMware vCenter外掛程式的預先定義角色
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="如何為ONTAP VMware vSphere設定適用於VMware vSphere的VMware RBAC SnapCenter 外掛程式"
+      data-li-level="2#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/zh-tw/sc-plugin-vmware-vsphere-47/scpivs44_how_to_configure_ontap_rbac_for_snapcenter_plug-in_for_vmware_vsphere.html">
+        如何為ONTAP VMware vSphere設定適用於VMware vSphere的VMware RBAC SnapCenter 外掛程式
+      </a></li></ul></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="開始使用"
+      data-li-level="1" 
+      class="subfolders "
+    ><a href="#">
+        <div class="na-navbar-padding"> 開始使用</div>
+      </a>
+      <ul style="display: none;">
+        <li 
+      data-pdf-exists="true" 
+      data-pdf-filename="部署總覽"
+      data-li-level="2#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/zh-tw/sc-plugin-vmware-vsphere-47/scpivs44_get_started_overview.html">
+        部署總覽
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="新使用者的部署工作流程"
+      data-li-level="2#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/zh-tw/sc-plugin-vmware-vsphere-47/scpivs44_deployment_workflow_for_new_users.html">
+        新使用者的部署工作流程
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="現有使用者的部署工作流程"
+      data-li-level="2#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/zh-tw/sc-plugin-vmware-vsphere-47/scpivs44_deployment_workflow_for_existing_users.html">
+        現有使用者的部署工作流程
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="部署選擇控制閥的要求"
+      data-li-level="2" 
+      class="subfolders "
+    ><a href="#">
+        <div class="na-navbar-padding"> 部署選擇控制閥的要求</div>
+      </a>
+      <ul style="display: none;">
+        <li 
+      data-pdf-exists="true" 
+      data-pdf-filename="部署規劃與需求"
+      data-li-level="3#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/zh-tw/sc-plugin-vmware-vsphere-47/scpivs44_deployment_planning_and_requirements.html">
+        部署規劃與需求
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="需要最低ONTAP 的權限"
+      data-li-level="3#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/zh-tw/sc-plugin-vmware-vsphere-47/scpivs44_minimum_ontap_privileges_required.html">
+        需要最低ONTAP 的權限
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="所需的vCenter權限下限"
+      data-li-level="3#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/zh-tw/sc-plugin-vmware-vsphere-47/scpivs44_minimum_vcenter_privileges_required.html">
+        所需的vCenter權限下限
+      </a></li></ul></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="下載SnapCenter VMware vSphere OVA的功能更新外掛程式（開放式虛擬應用裝置）"
+      data-li-level="2#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/zh-tw/sc-plugin-vmware-vsphere-47/scpivs44_download_the_snapcenter_plug-in_for_vmware_vsphere_ova_open_virtual_appliance.html">
+        下載SnapCenter VMware vSphere OVA的功能更新外掛程式（開放式虛擬應用裝置）
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="部署SnapCenter VMware vSphere的VMware vCenter外掛程式"
+      data-li-level="2#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/zh-tw/sc-plugin-vmware-vsphere-47/scpivs44_deploy_snapcenter_plug-in_for_vmware_vsphere.html">
+        部署SnapCenter VMware vSphere的VMware vCenter外掛程式
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="部署後所需的作業與問題"
+      data-li-level="2#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/zh-tw/sc-plugin-vmware-vsphere-47/scpivs44_post_deployment_required_operations_and_issues.html">
+        部署後所需的作業與問題
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="登入SnapCenter VMware vSphere Web用戶端"
+      data-li-level="2#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/zh-tw/sc-plugin-vmware-vsphere-47/scpivs44_log_in_to_the_snapcenter_vmware_vsphere_web_client.html">
+        登入SnapCenter VMware vSphere Web用戶端
+      </a></li></ul></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="快速入門"
+      data-li-level="1" 
+      class="subfolders "
+    ><a href="#">
+        <div class="na-navbar-padding"> 快速入門</div>
+      </a>
+      <ul style="display: none;">
+        <li 
+      data-pdf-exists="true" 
+      data-pdf-filename="總覽"
+      data-li-level="2#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/zh-tw/sc-plugin-vmware-vsphere-47/scpivs44_quick_start_overview.html">
+        總覽
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="下載OVA（開放式虛擬應用裝置）"
+      data-li-level="2#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/zh-tw/sc-plugin-vmware-vsphere-47/scpivs44_download_the_ova_open_virtual_appliance.html">
+        下載OVA（開放式虛擬應用裝置）
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="部署SnapCenter VMware vSphere的VMware vCenter外掛程式"
+      data-li-level="2#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/zh-tw/sc-plugin-vmware-vsphere-47/scpivs44_deploy_snapcenter_plug-in_for_vmware_vsphere_01.html">
+        部署SnapCenter VMware vSphere的VMware vCenter外掛程式
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="新增儲存設備"
+      data-li-level="2#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/zh-tw/sc-plugin-vmware-vsphere-47/scpivs44_add_storage.html">
+        新增儲存設備
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="建立備份原則"
+      data-li-level="2#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/zh-tw/sc-plugin-vmware-vsphere-47/scpivs44_create_backup_policies.html">
+        建立備份原則
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="建立資源群組"
+      data-li-level="2#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/zh-tw/sc-plugin-vmware-vsphere-47/scpivs44_create_resource_groups.html">
+        建立資源群組
+      </a></li></ul></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="監控與報告"
+      data-li-level="1" 
+      class="subfolders "
+    ><a href="#">
+        <div class="na-navbar-padding"> 監控與報告</div>
+      </a>
+      <ul style="display: none;">
+        <li 
+      data-pdf-exists="true" 
+      data-pdf-filename="檢視狀態資訊"
+      data-li-level="2#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/zh-tw/sc-plugin-vmware-vsphere-47/scpivs44_view_status_information.html">
+        檢視狀態資訊
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="監控工作"
+      data-li-level="2#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/zh-tw/sc-plugin-vmware-vsphere-47/scpivs44_monitor_jobs.html">
+        監控工作
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="下載工作記錄"
+      data-li-level="2#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/zh-tw/sc-plugin-vmware-vsphere-47/scpivs44_download_job_logs.html">
+        下載工作記錄
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="存取報告"
+      data-li-level="2#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/zh-tw/sc-plugin-vmware-vsphere-47/scpivs44_access_reports.html">
+        存取報告
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="從SnapCenter VMware vSphere GUI的VMware vSphere GUI的VMware支援外掛程式產生支援套裝組合"
+      data-li-level="2#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/zh-tw/sc-plugin-vmware-vsphere-47/scpivs44_generate_a_support_bundle_from_the_snapcenter_plug-in_for_vmware_vsphere_gui.html">
+        從SnapCenter VMware vSphere GUI的VMware vSphere GUI的VMware支援外掛程式產生支援套裝組合
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="從維護主控台產生支援套裝組合"
+      data-li-level="2#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/zh-tw/sc-plugin-vmware-vsphere-47/scpivs44_generate_a_support_bundle_from_the_maintenance_console.html">
+        從維護主控台產生支援套裝組合
+      </a></li></ul></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="管理儲存設備"
+      data-li-level="1" 
+      class="subfolders "
+    ><a href="#">
+        <div class="na-navbar-padding"> 管理儲存設備</div>
+      </a>
+      <ul style="display: none;">
+        <li 
+      data-pdf-exists="true" 
+      data-pdf-filename="新增儲存設備"
+      data-li-level="2#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/zh-tw/sc-plugin-vmware-vsphere-47/scpivs44_add_storage_01.html">
+        新增儲存設備
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="管理儲存VM：修改、重新命名、移除"
+      data-li-level="2#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/zh-tw/sc-plugin-vmware-vsphere-47/scpivs44_manage_storage_systems.html">
+        管理儲存VM：修改、重新命名、移除
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="修改設定的儲存逾時"
+      data-li-level="2#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/zh-tw/sc-plugin-vmware-vsphere-47/scpivs44_modify_storage_timeout.html">
+        修改設定的儲存逾時
+      </a></li></ul></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="保護資料"
+      data-li-level="1" 
+      class="subfolders "
+    ><a href="#">
+        <div class="na-navbar-padding"> 保護資料</div>
+      </a>
+      <ul style="display: none;">
+        <li 
+      data-pdf-exists="true" 
+      data-pdf-filename="資料保護工作流程"
+      data-li-level="2#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/zh-tw/sc-plugin-vmware-vsphere-47/scpivs44_protect_data_overview.html">
+        資料保護工作流程
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="檢視備份"
+      data-li-level="2#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/zh-tw/sc-plugin-vmware-vsphere-47/scpivs44_view_vm_and_datastore_backups.html">
+        檢視備份
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="建立備份原則"
+      data-li-level="2#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/zh-tw/sc-plugin-vmware-vsphere-47/scpivs44_create_backup_policies_for_vms_and_datastores.html">
+        建立備份原則
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="建立資源群組"
+      data-li-level="2#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/zh-tw/sc-plugin-vmware-vsphere-47/scpivs44_create_resource_groups_for_vms_and_datastores.html">
+        建立資源群組
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="簡報與指令碼"
+      data-li-level="2#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/zh-tw/sc-plugin-vmware-vsphere-47/scpivs44_prescripts_and_postscripts.html">
+        簡報與指令碼
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="將單一VM或資料存放區新增至資源群組"
+      data-li-level="2#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/zh-tw/sc-plugin-vmware-vsphere-47/scpivs44_add_a_single_vm_or_datastore_to_a_resource_group.html">
+        將單一VM或資料存放區新增至資源群組
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="將多個VM和資料存放區新增至資源群組"
+      data-li-level="2#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/zh-tw/sc-plugin-vmware-vsphere-47/scpivs44_add_multiple_vms_and_datastores_to_a_resource_group.html">
+        將多個VM和資料存放區新增至資源群組
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="隨需備份資源群組"
+      data-li-level="2#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/zh-tw/sc-plugin-vmware-vsphere-47/scpivs44_back_up_resource_groups_on_demand.html">
+        隨需備份資源群組
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="備份MySQL資料庫"
+      data-li-level="2#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/zh-tw/sc-plugin-vmware-vsphere-47/scpivs44_back_up_the_snapcenter_plug-in_for_vmware_vsphere_mysql_database.html">
+        備份MySQL資料庫
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="管理資源群組：暫停、恢復、修改、刪除"
+      data-li-level="2#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/zh-tw/sc-plugin-vmware-vsphere-47/scpivs44_manage_resource_groups.html">
+        管理資源群組：暫停、恢復、修改、刪除
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="管理原則：分離、修改、刪除"
+      data-li-level="2#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/zh-tw/sc-plugin-vmware-vsphere-47/scpivs44_manage_policies.html">
+        管理原則：分離、修改、刪除
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="管理備份-重新命名、刪除"
+      data-li-level="2#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/zh-tw/sc-plugin-vmware-vsphere-47/scpivs44_manage_backups.html">
+        管理備份-重新命名、刪除
+      </a></li></ul></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="掛載及卸載資料存放區"
+      data-li-level="1" 
+      class="subfolders "
+    ><a href="#">
+        <div class="na-navbar-padding"> 掛載及卸載資料存放區</div>
+      </a>
+      <ul style="display: none;">
+        <li 
+      data-pdf-exists="true" 
+      data-pdf-filename="掛載備份"
+      data-li-level="2#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/zh-tw/sc-plugin-vmware-vsphere-47/scpivs44_mount_a_backup.html">
+        掛載備份
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="卸載備份"
+      data-li-level="2#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/zh-tw/sc-plugin-vmware-vsphere-47/scpivs44_unmount_a_backup.html">
+        卸載備份
+      </a></li></ul></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="從備份還原"
+      data-li-level="1" 
+      class="subfolders "
+    ><a href="#">
+        <div class="na-navbar-padding"> 從備份還原</div>
+      </a>
+      <ul style="display: none;">
+        <li 
+      data-pdf-exists="true" 
+      data-pdf-filename="總覽"
+      data-li-level="2#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/zh-tw/sc-plugin-vmware-vsphere-47/scpivs44_restore_from_backups_overview.html">
+        總覽
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="如何執行還原作業"
+      data-li-level="2#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/zh-tw/sc-plugin-vmware-vsphere-47/scpivs44_how_restore_operations_are_performed.html">
+        如何執行還原作業
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="搜尋備份"
+      data-li-level="2#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/zh-tw/sc-plugin-vmware-vsphere-47/scpivs44_search_for_backups.html">
+        搜尋備份
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="從備份還原VM"
+      data-li-level="2#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/zh-tw/sc-plugin-vmware-vsphere-47/scpivs44_restore_vms_from_backups.html">
+        從備份還原VM
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="從備份還原刪除的VM"
+      data-li-level="2#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/zh-tw/sc-plugin-vmware-vsphere-47/scpivs44_restore_deleted_vms_from_backups.html">
+        從備份還原刪除的VM
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="從備份還原VMDK"
+      data-li-level="2#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/zh-tw/sc-plugin-vmware-vsphere-47/scpivs44_restore_vmdks_from_backups.html">
+        從備份還原VMDK
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="還原MySQL資料庫的最新備份"
+      data-li-level="2#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/zh-tw/sc-plugin-vmware-vsphere-47/scpivs44_restore_the_most_recent_backup_of_the_mysql_database.html">
+        還原MySQL資料庫的最新備份
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="還原MySQL資料庫的特定備份"
+      data-li-level="2#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/zh-tw/sc-plugin-vmware-vsphere-47/scpivs44_restore_a_specific_backup_of_the_mysql_database.html">
+        還原MySQL資料庫的特定備份
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="將VMDK附加至VM或VVol VM"
+      data-li-level="2#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/zh-tw/sc-plugin-vmware-vsphere-47/scpivs44_attach_vmdks_to_a_vm.html">
+        將VMDK附加至VM或VVol VM
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="分離虛擬磁碟"
+      data-li-level="2#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/zh-tw/sc-plugin-vmware-vsphere-47/scpivs44_detach_a_virtual_disk.html">
+        分離虛擬磁碟
+      </a></li></ul></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="還原來賓檔案和資料夾"
+      data-li-level="1" 
+      class="subfolders "
+    ><a href="#">
+        <div class="na-navbar-padding"> 還原來賓檔案和資料夾</div>
+      </a>
+      <ul style="display: none;">
+        <li 
+      data-pdf-exists="true" 
+      data-pdf-filename="工作流程、先決條件及限制"
+      data-li-level="2#" 
+      class="  active "
+    ><a class="na-navbar-padding" href="/zh-tw/sc-plugin-vmware-vsphere-47/scpivs44_restore_guest_files_and_folders_overview.html">
+        工作流程、先決條件及限制
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="從VMDK還原來賓檔案和資料夾"
+      data-li-level="2#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/zh-tw/sc-plugin-vmware-vsphere-47/scpivs44_restore_guest_files_and_folders_from_vmdks.html">
+        從VMDK還原來賓檔案和資料夾
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="設定Proxy VM以進行還原作業"
+      data-li-level="2#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/zh-tw/sc-plugin-vmware-vsphere-47/scpivs44_set_up_proxy_vms_for_restore_operations.html">
+        設定Proxy VM以進行還原作業
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="設定VM客體檔案還原的認證資料"
+      data-li-level="2#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/zh-tw/sc-plugin-vmware-vsphere-47/scpivs44_configure_credentials_for_vm_guest_file_restores.html">
+        設定VM客體檔案還原的認證資料
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="延長客體檔案還原工作階段的時間"
+      data-li-level="2#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/zh-tw/sc-plugin-vmware-vsphere-47/scpivs44_extend_the_time_of_a_guest_file_restore_session.html">
+        延長客體檔案還原工作階段的時間
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="您可能會遇到的客體檔案還原案例"
+      data-li-level="2#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/zh-tw/sc-plugin-vmware-vsphere-47/scpivs44_guest_file_restore_scenarios_you_might_encounter.html">
+        您可能會遇到的客體檔案還原案例
+      </a></li></ul></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="管理SnapCenter VMware vSphere應用裝置的VMware vCenter外掛程式"
+      data-li-level="1" 
+      class="subfolders "
+    ><a href="#">
+        <div class="na-navbar-padding"> 管理SnapCenter VMware vSphere應用裝置的VMware vCenter外掛程式</div>
+      </a>
+      <ul style="display: none;">
+        <li 
+      data-pdf-exists="true" 
+      data-pdf-filename="重新啟動VMware vSphere Web用戶端服務"
+      data-li-level="2#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/zh-tw/sc-plugin-vmware-vsphere-47/scpivs44_restart_the_vmware_vsphere_web_client_service.html">
+        重新啟動VMware vSphere Web用戶端服務
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="存取維護主控台"
+      data-li-level="2#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/zh-tw/sc-plugin-vmware-vsphere-47/scpivs44_access_the_maintenance_console.html">
+        存取維護主控台
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="從SnapCenter 維護主控台修改VMware vCenter外掛程式密碼"
+      data-li-level="2#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/zh-tw/sc-plugin-vmware-vsphere-47/scpivs44_modify_plugin_password.html">
+        從SnapCenter 維護主控台修改VMware vCenter外掛程式密碼
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="建立及匯入憑證"
+      data-li-level="2#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/zh-tw/sc-plugin-vmware-vsphere-47/scpivs44_create_and_import_certificates.html">
+        建立及匯入憑證
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="從SnapCenter vCenter取消登錄VMware vSphere的VMware vSphere外掛程式"
+      data-li-level="2#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/zh-tw/sc-plugin-vmware-vsphere-47/scpivs44_unregister_plugin_from_vcenter.html">
+        從SnapCenter vCenter取消登錄VMware vSphere的VMware vSphere外掛程式
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="停用SnapCenter 並啟用VMware vSphere的功能支援功能"
+      data-li-level="2#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/zh-tw/sc-plugin-vmware-vsphere-47/scpivs44_disable_and_enable_plugin.html">
+        停用SnapCenter 並啟用VMware vSphere的功能支援功能
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="移除SnapCenter VMware vSphere的功能性外掛程式"
+      data-li-level="2#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/zh-tw/sc-plugin-vmware-vsphere-47/scpivs44_remove_plugin.html">
+        移除SnapCenter VMware vSphere的功能性外掛程式
+      </a></li></ul></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="管理您的組態"
+      data-li-level="1" 
+      class="subfolders "
+    ><a href="#">
+        <div class="na-navbar-padding"> 管理您的組態</div>
+      </a>
+      <ul style="display: none;">
+        <li 
+      data-pdf-exists="true" 
+      data-pdf-filename="修改時區"
+      data-li-level="2#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/zh-tw/sc-plugin-vmware-vsphere-47/scpivs44_modify_the_time_zones.html">
+        修改時區
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="修改登入認證資料"
+      data-li-level="2#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/zh-tw/sc-plugin-vmware-vsphere-47/scpivs44_modify_the_logon_credentials.html">
+        修改登入認證資料
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="修改vCenter登入認證"
+      data-li-level="2#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/zh-tw/sc-plugin-vmware-vsphere-47/scpivs44_modify_the_vcenter_logon_credentials.html">
+        修改vCenter登入認證
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="修改網路設定"
+      data-li-level="2#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/zh-tw/sc-plugin-vmware-vsphere-47/scpivs44_modify_the_network_settings.html">
+        修改網路設定
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="修改組態預設值"
+      data-li-level="2#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/zh-tw/sc-plugin-vmware-vsphere-47/scpivs44_modify_configuration_default_values.html">
+        修改組態預設值
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="建立scbr.override檔案"
+      data-li-level="2#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/zh-tw/sc-plugin-vmware-vsphere-47/scpivs44_create_the_scbr_override_file.html">
+        建立scbr.override檔案
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="您可以置換的組態內容"
+      data-li-level="2#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/zh-tw/sc-plugin-vmware-vsphere-47/scpivs44_properties_you_can_override.html">
+        您可以置換的組態內容
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="啟用SSH"
+      data-li-level="2#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/zh-tw/sc-plugin-vmware-vsphere-47/scpivs44_enable_ssh.html">
+        啟用SSH
+      </a></li></ul></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="REST API"
+      data-li-level="1" 
+      class="subfolders "
+    ><a href="#">
+        <div class="na-navbar-padding"> REST API</div>
+      </a>
+      <ul style="display: none;">
+        <li 
+      data-pdf-exists="true" 
+      data-pdf-filename="總覽"
+      data-li-level="2#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/zh-tw/sc-plugin-vmware-vsphere-47/scpivs44_rest_apis_overview.html">
+        總覽
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="使用Swagger API網頁存取REST API"
+      data-li-level="2#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/zh-tw/sc-plugin-vmware-vsphere-47/scpivs44_access_rest_apis_using_the_swagger_api_web_page.html">
+        使用Swagger API網頁存取REST API
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="REST API工作流程、以新增及修改儲存VM"
+      data-li-level="2#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/zh-tw/sc-plugin-vmware-vsphere-47/scpivs44_rest_api_workflows__add_and_modify_storage_vms.html">
+        REST API工作流程、以新增及修改儲存VM
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="REST API工作流程、以建立及修改資源群組"
+      data-li-level="2#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/zh-tw/sc-plugin-vmware-vsphere-47/scpivs44_rest_api_workflows__create_and_modify_resource_groups.html">
+        REST API工作流程、以建立及修改資源群組
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="REST API工作流程、可隨需備份"
+      data-li-level="2#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/zh-tw/sc-plugin-vmware-vsphere-47/scpivs44_rest_api_workflow__back_up_on_demand.html">
+        REST API工作流程、可隨需備份
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="REST API工作流程來還原VM"
+      data-li-level="2#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/zh-tw/sc-plugin-vmware-vsphere-47/scpivs44_rest_api_workflow__restore_vms.html">
+        REST API工作流程來還原VM
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="REST API工作流程可還原刪除的VM"
+      data-li-level="2#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/zh-tw/sc-plugin-vmware-vsphere-47/scpivs44_rest_api_workflow__restore_deleted_vms.html">
+        REST API工作流程可還原刪除的VM
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="REST API工作流程可還原VMDK"
+      data-li-level="2#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/zh-tw/sc-plugin-vmware-vsphere-47/scpivs44_rest_api_workflow__restore_vmdks.html">
+        REST API工作流程可還原VMDK
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="REST API工作流程以附加和分離VMDK"
+      data-li-level="2#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/zh-tw/sc-plugin-vmware-vsphere-47/scpivs44_rest_api_workflows__attach_and_detach_vmdks.html">
+        REST API工作流程以附加和分離VMDK
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="REST API工作流程以掛載及卸載資料存放區"
+      data-li-level="2#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/zh-tw/sc-plugin-vmware-vsphere-47/scpivs44_rest_api_workflows__mount_and_unmount_datastores.html">
+        REST API工作流程以掛載及卸載資料存放區
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="REST API可下載工作並產生報告"
+      data-li-level="2#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/zh-tw/sc-plugin-vmware-vsphere-47/scpivs44_rest_apis__download_jobs_and_generate_reports.html">
+        REST API可下載工作並產生報告
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="REST API工作流程可修改內建排程"
+      data-li-level="2#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/zh-tw/sc-plugin-vmware-vsphere-47/scpivs44_rest_api_workflows__modify_built-in_schedules.html">
+        REST API工作流程可修改內建排程
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="REST API可將卡住的工作標示為失敗"
+      data-li-level="2#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/zh-tw/sc-plugin-vmware-vsphere-47/scpivs44_rest_apis_fail_stuck_jobs.html">
+        REST API可將卡住的工作標示為失敗
+      </a></li></ul></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="升級"
+      data-li-level="1" 
+      class="subfolders "
+    ><a href="#">
+        <div class="na-navbar-padding"> 升級</div>
+      </a>
+      <ul style="display: none;">
+        <li 
+      data-pdf-exists="true" 
+      data-pdf-filename="升級至SnapCenter 舊版VMware vSphere的VMware vSphere用版不整合式外掛程式"
+      data-li-level="2#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/zh-tw/sc-plugin-vmware-vsphere-47/scpivs44_upgrade.html">
+        升級至SnapCenter 舊版VMware vSphere的VMware vSphere用版不整合式外掛程式
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="升級至同一版本的新修補程式"
+      data-li-level="2#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/zh-tw/sc-plugin-vmware-vsphere-47/scpivs44_upgrade_to_a_new_patch.html">
+        升級至同一版本的新修補程式
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="升級至同一版本的新修補程式後、不會顯示相關資訊"
+      data-li-level="2#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/zh-tw/sc-plugin-vmware-vsphere-47/scpivs44_information_not_displayed_after_upgrading_to_a_new_patch_of_the_same_release.html">
+        升級至同一版本的新修補程式後、不會顯示相關資訊
+      </a></li></ul></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="法律聲明"
+      data-li-level="1#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/zh-tw/sc-plugin-vmware-vsphere-47/legal-notices.html">
+        法律聲明
+      </a></li></ul>
+</div>
+<script>
+  window.onscroll = () => {
+    const value = -40 - (document.body.scrollHeight - (window.innerHeight + document.scrollingElement.scrollTop));
+    
+    document.getElementById("sidebar-height").style.bottom = Math.max(0,value) + "px";
+};
+</script>
+<!-- this highlights the active parent class in the navgoco sidebar. this is critical so that the parent expands when you're viewing a page. This must appear below the sidebar code above. Otherwise, if placed inside customscripts.js, the script runs before the sidebar code runs and the class never gets inserted.-->
+<script>$("li.active").parents('li').toggleClass("active");</script>
+<script>$("#mysidebar li.active").parents('ul').css("display","block");</script>
+
+
+  </div>
+  
+
+  <div class="ie-content-pane n-doc__component-detail-content n-doc__component-detail-content--show-code">
+    <!-- Begin of page container --><article class="page-content" id="main">
+      <div class="ie-utility">
+  <button id="btn-sidebar-expand" onclick="showSidebar()"><img src="/zh-tw/sc-plugin-vmware-vsphere-47/images/expand.png" alt="展開瀏覽面板"></button>
+  <div class="ie-menu">
+    <div class="n-breadcrumb">
+      <ul class="n-breadcrumb__list">
+        <li class="n-breadcrumb__list-item">
+          <a href="https://docs.netapp.com">docs.netapp.com</a>
+        </li>
+        
+
+        
+
+        <li class="n-breadcrumb__list-item">
+          <a href="/zh-tw/sc-plugin-vmware-vsphere-47/">SnapCenter&nbsp;Plug-in&nbsp;for&nbsp;VMware&nbsp;vSphere&nbsp;4.7</a>
+        </li>
+
+      </ul>
+    </div>
+    <div style="clear: both"></div><!-- Main needs to have height -->
+  </div>
+</div>
+
+      <div class="ie-nmt-disclaimer">
+  <span>
+    <div class="ie-nmt-disclaimer-container">
+      <div class="ie-nmt-disclaimer-icon">
+        <svg class="luci-icon" aria-hidden="true">
+          <use xlink:href="/zh-tw/sc-plugin-vmware-vsphere-47/common/svg/sprite.svg#circle-info">
+        </svg>
+      </div>
+      <div class="ie-nmt-disclaimer-content">
+        <span> 本繁體中文版使用機器翻譯，譯文僅供參考，若與英文版本牴觸，應以英文版本為準。 </span>
+      </div>
+      <div style="clear:both;"></div>
+    </div>
+  </span>
+</div><div class="n-doc__component-detail-heading-wrap">
+  <h1 class="n-doc__component-detail-heading">工作流程、先決條件及限制</h1>
+</div>
+
+
+<p class="page-details">
+  
+    
+    <time datetime="2023-01-27 06:57:45 +0000">01/27/2023</time>
+    
+  
+
+<span>貢獻者
+</span>
+
+
+</p>
+
+<div id="preamble">
+<div class="sectionbody">
+<div class="paragraph lead">
+<p>您可以從Windows來賓作業系統上的虛擬機器磁碟（VMDK）還原檔案或資料夾。</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="來賓還原工作流程">來賓還原工作流程</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>來賓作業系統還原作業包括下列步驟：</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>附加</p>
+<div class="paragraph">
+<p>將虛擬磁碟附加至客體VM或Proxy VM、然後啟動客體檔案還原工作階段。</p>
+</div>
+</li>
+<li>
+<p>請稍候</p>
+<div class="paragraph">
+<p>請等待附加作業完成、然後再瀏覽及還原。連接時</p>
+</div>
+<div class="paragraph">
+<p>作業完成後、系統會自動建立來賓檔案還原工作階段、並發出電子郵件通知</p>
+</div>
+<div class="paragraph">
+<p>已傳送。</p>
+</div>
+</li>
+<li>
+<p>選取檔案或資料夾</p>
+<div class="paragraph">
+<p>在來賓檔案還原工作階段中瀏覽VMDK、然後選取一或多個要還原的檔案或資料夾。</p>
+</div>
+</li>
+<li>
+<p>還原</p>
+<div class="paragraph">
+<p>將選取的檔案或資料夾還原至指定位置。</p>
+</div>
+</li>
+</ol>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="還原來賓檔案和資料夾的必要條件">還原來賓檔案和資料夾的必要條件</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>在Windows來賓作業系統上從VMDK還原一或多個檔案或資料夾之前、您必須瞭解所有需求。</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>必須安裝並執行VMware Tools。</p>
+<div class="paragraph">
+<p>使用VMware Tools的資訊建立與VMware來賓作業系統的連線。SnapCenter</p>
+</div>
+</li>
+<li>
+<p>Windows來賓作業系統必須執行Windows Server 2008 R2或更新版本。</p>
+<div class="paragraph">
+<p>如需支援版本的最新資訊、請參閱 <a href="https://imt.netapp.com/matrix/imt.jsp?components=105164;&amp;solution=1517&amp;isHWU&amp;src=IMT" target="_blank" rel="noopener">"NetApp互通性對照表工具IMT （不含）"</a>。</p>
+</div>
+</li>
+<li>
+<p>目標VM的認證資料必須指定內建的網域系統管理員帳戶或內建的本機系統管理員帳戶。使用者名稱必須是「Administrator」（管理員）。 在開始還原作業之前、您必須為要附加虛擬磁碟的VM設定認證。附加作業和後續還原作業都需要認證資料。工作群組使用者可以使用內建的本機系統管理員帳戶。</p>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<img src="/us-en/sc-plugin-vmware-vsphere-47/images/important.svg" alt="重要">
+</td>
+<td class="content">
+如果您必須使用非內建系統管理員帳戶、但在VM內具有系統管理權限的帳戶、則必須停用客體VM上的UAC.
+</td>
+</tr>
+</table>
+</div>
+</li>
+<li>
+<p>您必須知道要從中還原的備份Snapshot複本和VMDK。</p>
+<div class="paragraph">
+<p>VMware vSphere的支援還原外掛程式不支援搜尋要還原的檔案或資料夾。SnapCenter因此、在開始之前、您必須先知道與Snapshot複本和對應VMDK有關的檔案或資料夾位置。</p>
+</div>
+</li>
+<li>
+<p>要附加的虛擬磁碟必須位於SnapCenter 不可靠的備份中。</p>
+<div class="paragraph">
+<p>包含您要還原之檔案或資料夾的虛擬磁碟必須位於VM備份中、此備份是使用VMware SnapCenter vSphere的虛擬應用裝置進行的。</p>
+</div>
+</li>
+<li>
+<p>若要使用Proxy VM、必須設定Proxy VM。</p>
+<div class="paragraph">
+<p>如果您想要將虛擬磁碟附加至Proxy VM、則必須先設定Proxy VM、才能開始附加與還原作業。</p>
+</div>
+</li>
+<li>
+<p>對於非英文字母名稱的檔案、您必須將其還原至目錄、而非單一檔案。</p>
+<div class="paragraph">
+<p>您可以還原檔案所在的目錄、還原非字母名稱的檔案、例如日文日文日文日文日文日文日文日文日文日文日文日文日文日文日文日文日文日文日文日文日文日文日文日文日文。</p>
+</div>
+</li>
+<li>
+<p>不支援從Linux客體作業系統還原</p>
+<div class="paragraph">
+<p>您無法從執行Linux客體作業系統的VM還原檔案和資料夾。不過、您可以附加VMDK、然後手動還原檔案和資料夾。如需受支援來賓作業系統的最新資訊、請參閱 <a href="https://imt.netapp.com/matrix/imt.jsp?components=105164;&amp;solution=1517&amp;isHWU&amp;src=IMT" target="_blank" rel="noopener">"NetApp互通性對照表工具IMT （不含）"</a>。</p>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="客體檔案還原限制">客體檔案還原限制</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>在從客體作業系統還原檔案或資料夾之前、您應該瞭解此功能不支援的項目。</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>您無法在客體作業系統內還原動態磁碟類型。</p>
+</li>
+<li>
+<p>如果還原加密的檔案或資料夾、加密屬性將不會保留。您無法將檔案或資料夾還原至加密的資料夾。</p>
+</li>
+<li>
+<p>「來賓檔案瀏覽」頁面會顯示您無法篩選的隱藏檔案和資料夾。</p>
+</li>
+<li>
+<p>您無法從Linux客體作業系統還原。</p>
+<div class="paragraph">
+<p>您無法從執行Linux客體作業系統的VM還原檔案和資料夾。不過、您可以附加VMDK、然後手動還原檔案和資料夾。如需受支援來賓作業系統的最新資訊、請參閱 <a href="https://imt.netapp.com/matrix/imt.jsp?components=105164;&amp;solution=1517&amp;isHWU&amp;src=IMT" target="_blank" rel="noopener">"NetApp互通性對照表工具IMT （不含）"</a>。</p>
+</div>
+</li>
+<li>
+<p>您無法從NTFS檔案系統還原為FAT檔案系統。</p>
+<div class="paragraph">
+<p>當您嘗試從NTFS格式還原為FAT-format時、不會複製NTFS安全性描述元、因為該檔案系統不支援Windows安全性屬性。</p>
+</div>
+</li>
+<li>
+<p>您無法從複製的VMDK或未初始化的VMDK還原來賓檔案。</p>
+</li>
+<li>
+<p>如果備份是在執行ONTAP VMware 9.2或更新版本的系統上執行、而且VMware一致性選項已開啟、則無法從次要備份還原。</p>
+</li>
+<li>
+<p>您無法還原檔案的目錄結構。</p>
+<div class="paragraph">
+<p>如果選取要還原巢狀目錄中的檔案、則不會使用相同的目錄結構來還原檔案。目錄樹狀結構不會還原、只會還原檔案。如果您想要還原目錄樹狀結構、可以複製結構頂端的目錄本身。</p>
+</div>
+</li>
+<li>
+<p>您無法將來賓檔案從vVol VM還原至替代主機。</p>
+</li>
+<li>
+<p>您無法還原加密的來賓檔案。</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+
+    </article>
+    <!-- Page Container -->
+  </div>
+
+  <div style="clear: both"></div><!-- Main needs to have height --></div>
+
+        </main>
+
+        <footer class="n-footer">
+  <div class="n-footer__bottom">
+    <div class="n-container">
+      <div class="n-footer__bottom-left">
+        <div class="n-footer__copyright">
+          <ul class="n-footer__copyright-list">
+            <li class="n-footer__copyright-link">
+              <a href="https://www.netapp.com/us/legal/copyright.aspx">© 2023 NetApp, Inc.</a>
+            </li>
+            <li class="n-footer__copyright-link">
+              <a href="https://www.netapp.com/company/legal/terms-of-use/">條款與條件</a>
+            </li>
+            <li class="n-footer__copyright-link">
+              <a href="https://www.netapp.com/company/legal/privacy-policy/">Privacy Policy</a>
+            </li>
+            <li class="n-footer__copyright-link">
+              <a href="https://www.netapp.com/company/legal/cookie-policy/">Cookie Policy</a>
+            </li>
+            <li class="n-footer__copyright-link">
+              <a class="ot-sdk-show-settings">Cookie 設定</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="n-footer__bottom-right">
+        <div class="n-footer__copyright">
+          <ul class="n-footer__copyright-list">
+            <li class="n-footer__copyright-link">
+              <a target="_self" href="javascript:netapp_mailto()">傳送有關本網頁的意見反應</a>
+            </li>
+          </ul>
+        </div>
+        <div class="n-footer__social-links">
+          <ul class="n-footer__social-link-list">
+            <li class="n-footer__social-link-list-item">
+              <a class="n-footer__social-link" data-ntap-social="follow-blog" href="https://blog.netapp.com"
+                target="_blank" title="blog" alt="blog">
+                <span class="n-footer__social-link-text">blog</span>
+                <svg class="n-icon-blog n-footer__social-link-icon" aria-labelledby="title">
+                  <title>blog@</title>
+                  <use xmlns:xlink="http://www.w3.org/1999/xlink"
+                    xlink:href="/zh-tw/sc-plugin-vmware-vsphere-47/common/svg/sprite.svg#blog"></use>
+                </svg>
+              </a>
+            </li>
+            <li class="n-footer__social-link-list-item">
+              <a class="n-footer__social-link" data-ntap-social="follow-community" href="https://community.netapp.com/"
+                target="_blank" title="community" alt="community">
+                <span class="n-footer__social-link-text">community</span>
+                <svg class="n-icon-community n-footer__social-link-icon" aria-labelledby="title">
+                  <title>community@</title>
+                  <use xmlns:xlink="http://www.w3.org/1999/xlink"
+                    xlink:href="/zh-tw/sc-plugin-vmware-vsphere-47/common/svg/sprite.svg#comments"></use>
+                </svg>
+              </a>
+            </li>
+            <li class="n-footer__social-link-list-item">
+              <a class="n-footer__social-link" data-ntap-social="follow-twitter" href="https://twitter.com/netapp"
+                target="_blank" title="twitter" alt="twitter">
+                <span class="n-footer__social-link-text">twitter</span>
+                <svg class="n-icon-twitter n-footer__social-link-icon" aria-labelledby="title">
+                  <title>twitter@</title>
+                  <use xmlns:xlink="http://www.w3.org/1999/xlink"
+                    xlink:href="/zh-tw/sc-plugin-vmware-vsphere-47/common/svg/sprite.svg#twitter"></use>
+                </svg>
+              </a>
+            </li>
+            <li class="n-footer__social-link-list-item">
+              <a class="n-footer__social-link" data-ntap-social="follow-facebook" href="https://www.facebook.com/NetApp"
+                target="_blank" title="facebook" alt="facebook">
+                <span class="n-footer__social-link-text">facebook</span>
+                <svg class="n-icon-facebook n-footer__social-link-icon" aria-labelledby="title">
+                  <title>facebook@</title>
+                  <use xmlns:xlink="http://www.w3.org/1999/xlink"
+                    xlink:href="/zh-tw/sc-plugin-vmware-vsphere-47/common/svg/sprite.svg#facebook"></use>
+                </svg>
+              </a>
+            </li>
+            <li class="n-footer__social-link-list-item">
+              <a class="n-footer__social-link" data-ntap-social="follow-linkedin"
+                href="https://www.linkedin.com/company/netapp" target="_blank" title="linkedin" alt="linkedin">
+                <span class="n-footer__social-link-text">linkedin</span>
+                <svg class="n-icon-linkedin n-footer__social-link-icon" aria-labelledby="title">
+                  <title>linkedin@</title>
+                  <use xmlns:xlink="http://www.w3.org/1999/xlink"
+                    xlink:href="/zh-tw/sc-plugin-vmware-vsphere-47/common/svg/sprite.svg#linkedin"></use>
+                </svg>
+              </a>
+            </li>
+            <li class="n-footer__social-link-list-item">
+              <a class="n-footer__social-link" data-ntap-social="follow-youtube"
+                href="https://www.youtube.com/user/NetAppTV" target="_blank" title="youtube" alt="youtube">
+                <span class="n-footer__social-link-text">youtube</span>
+                <svg class="n-icon-youtube n-footer__social-link-icon" aria-labelledby="title">
+                  <title>youtube@</title>
+                  <use xmlns:xlink="http://www.w3.org/1999/xlink"
+                    xlink:href="/zh-tw/sc-plugin-vmware-vsphere-47/common/svg/sprite.svg#youtube"></use>
+                </svg>
+              </a>
+            </li>
+            <li class="n-footer__social-link-list-item">
+              <a class="n-footer__social-link" data-ntap-social="follow-slideshare"
+                href="https://www.slideshare.net/NetApp" target="_blank" title="slideshare" alt="slideshare">
+                <span class="n-footer__social-link-text">slideshare</span>
+                <svg class="n-icon-slideshare n-footer__social-link-icon" aria-labelledby="title">
+                  <title>slideshare@</title>
+                  <use xmlns:xlink="http://www.w3.org/1999/xlink"
+                    xlink:href="/zh-tw/sc-plugin-vmware-vsphere-47/common/svg/sprite.svg#slideshare"></use>
+                </svg>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+      </div><!-- Elasticsearch JS -->
+      <script type="text/javascript" src='/zh-tw/sc-plugin-vmware-vsphere-47/js/bundle.js'></script>
+
+      <!-- Syntax Highlighting -->
+      <script type="text/javascript" src='/zh-tw/sc-plugin-vmware-vsphere-47/js/prism.js'></script>
+      <script type="text/javascript" src='/zh-tw/sc-plugin-vmware-vsphere-47/js/prism-curl.js'></script>
+    </div>
+    <script>
+      document.body.offsetWidth=1903;
+      cookieLaw = {}
+      cookieLaw.euCountry = "US";
+      cookieLaw.invoke = function(){return false;}
+    </script>
+    <script src='/zh-tw/sc-plugin-vmware-vsphere-47/js/www-ntap.js'></script>
+    <script src='/zh-tw/sc-plugin-vmware-vsphere-47/js/tabbed-blocks.js'></script>
+    <script src='/zh-tw/sc-plugin-vmware-vsphere-47/js/sidebar.js'></script>
+  </body></html>
